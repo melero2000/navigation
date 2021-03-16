@@ -1,35 +1,14 @@
-/*
- * TAB NAVIGATION: BARRA INFERIOR DE NAVEGACIÓN, SIN BARRA SUPERIOR NI BACK ARROW, NAVEGACIÓN ENTRE PANTALLAS
- * SIN SUPERPOSICIÓN - NO SE PUEDEN AÑADIR PÁGINAS OCULTAS (QUE NO APAREZCAN EL MENÚ) por lo q hay q combinar stack y tab
- */
-
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
-import HomeStack from './HomeStack';
-import ContactStack from './ContactStack';
-import AboutStack from './AboutStack';
-
-import About from '../screens/About';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import Home from '../screens/Home';
 import Contact from '../screens/Contact';
 
-const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function Navigation() {
   return (
-    <Tab.Navigator>
-      {/**Se le pasa el componente HomeStack así se combinan el Stack con el tab navigation */}
-      <Tab.Screen name="home" component={HomeStack} options={{title: 'Home'}} />
-      <Tab.Screen
-        name="contact"
-        component={ContactStack}
-        options={{title: 'Contact'}}
-      />
-      <Tab.Screen
-        name="about"
-        component={AboutStack}
-        options={{title: 'About'}}
-      />
-    </Tab.Navigator>
+    <Drawer.Navigator>
+      <Drawer.Screen name="home" component={Home} options={{title: 'Home'}} />
+    </Drawer.Navigator>
   );
 }
